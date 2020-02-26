@@ -117,11 +117,19 @@ const makeMarker = (trip, points) => {
 
 const infoWindowContent = marker => {
   if (marker.photos != "") {
-    return marker.basicInfo + marker.morePhotos + marker.locations + marker.description;
+    if (marker.people !== null) {
+      return marker.basicInfo + marker.peopleInsert + marker.morePhotos + marker.locations + marker.description;
+    } else {
+      return marker.basicInfo + marker.morePhotos + marker.locations + marker.description;
+    }
 
   // Without people visited
   } else {
-    return marker.basicInfo + marker.locations + marker.description;
+    if (marker.people !== null) {
+      return marker.basicInfo + marker.peopleInsert + marker.locations + marker.description;
+    } else {
+      return marker.basicInfo + marker.locations + marker.description;
+    }
   };
 }
 
