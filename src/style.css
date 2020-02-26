@@ -1,0 +1,82 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:800|Roboto);
+
+body {
+  margin: 0px auto;
+  font-family: 'Montserrat';
+  background-color: #f8f8f8;
+  color: #222;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+p {
+  font-family: Arial, sans;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #786651;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #333;
+}
+
+/* .map {
+  height: 80vh;
+  width: 100%;
+} */
+
+.map-window {
+  max-height: 60vh;
+  padding: 15px;
+}
+
+.map-window div {
+  margin: 0px 0px 15px 0px;
+}
+
+.map-window h1, .map-window h2, .map-window h3, .map-window h4, .map-window p {
+  display: inline;
+  float: none;
+  text-align: left;
+  width: auto;
+}
+
+/* Remove pointer on window */
+.gm-style .gm-style-iw-t::after {
+  display: none;
+}
+
+.gm-style .gm-style-iw {
+  font-weight: 400;
+}
+
+.gm-style .gm-style-iw-c {
+  background-color: #fefefe;
+  border-radius: 0px;
+  box-shadow: 0 2px 17px 5px rgba(0,0,0,0.3);
+}
+
+.gm-style-iw button img {
+  display: none !important;
+}
+
+@media only screen and (max-width: 1500px) {
+  .gm-style .gm-style-iw p {
+    font-size: 14px;
+  }
+}
+
+.map-panel-photo {
+  width: 100%;
+}
