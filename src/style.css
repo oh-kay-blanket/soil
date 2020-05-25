@@ -1,8 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:800|Roboto);
-
 body {
   margin: 0px auto;
-  font-family: 'Montserrat';
+  font-family: "Open sans", sans;
   background-color: #f8f8f8;
   color: #222;
 }
@@ -17,7 +15,7 @@ h2 {
 }
 
 p {
-  font-family: Arial, sans;
+  font-family: "Open sans", sans;
   font-size: 16px;
 }
 
@@ -53,6 +51,10 @@ a:hover {
 }
 
 /* Remove pointer on window */
+.gm-style {
+  font-family: 'Open sans', sans;
+}
+
 .gm-style .gm-style-iw-t::after {
   display: none;
 }
