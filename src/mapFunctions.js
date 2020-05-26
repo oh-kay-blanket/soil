@@ -102,15 +102,12 @@ const makeMarker = (trip, points) => {
           <p><b>${trip.From} - ${trip.To}</b></p>
         </div>`,
 
-    description:`<div><p><b> The story:</b> ${trip.Description}</p></div></div>`,
-
     locations:`<div><p><b>Places visited</b>: ${trip.Locations}</p></div>`,
-
-    people:trip.People,
-    peopleInsert:`<div><p><b>People seen: </b>${trip.People}</p></div>`,
     photos:trip.PhotoAlbum,
     morePhotos: photoAlbumCheck(trip),
-    number:trip.NumberInTrip,
+    people:trip.People,
+    peopleInsert:`<div><p><b>People seen: </b>${trip.People}</p></div>`,
+    description:`<div><p>${trip.Description}</p></div></div>`,
     buildPath:points.slice(1)
   });
 }
