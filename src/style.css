@@ -36,7 +36,7 @@ a:hover {
 
 .map-window {
   max-height: 60vh;
-  padding: 15px;
+  padding: 5px;
 }
 
 .map-window div {
@@ -63,10 +63,16 @@ a:hover {
   font-weight: 400;
 }
 
+@media (max-width: 545px) {
+  .gm-style .gm-style-iw {
+    max-width: 90vw !important;
+  }
+}
+
 .gm-style .gm-style-iw-c {
   background-color: #fefefe;
-  border-radius: 0px;
-  box-shadow: 0 2px 17px 5px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px #333c;
 }
 
 .gm-style-iw button img {

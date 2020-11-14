@@ -46,16 +46,16 @@ const parseCoordinates = (newName,coordinates) => {
 
 const windowOffset = windowPlacement => {
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    switch(windowPlacement) {
-      case 'r':
-        return new google.maps.Size(170,250);
-      case 'l':
-        return  new google.maps.Size(-170,250);
-      case 't':
-        return  new google.maps.Size(0,20);
-      case 'b':
-        return  new google.maps.Size(0,650);
-    }
+    // switch(windowPlacement) {
+    //   case 'r':
+    //     return new google.maps.Size(0,0);
+    //   case 'l':
+    //     return  new google.maps.Size(0,0);
+    //   case 't':
+    //     return  new google.maps.Size(0,20);
+    //   case 'b':
+    //     return  new google.maps.Size(0,650);
+    // }
   } else {
     switch(windowPlacement) {
       case 'r':
