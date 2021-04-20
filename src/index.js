@@ -1,5 +1,5 @@
 import './style.css';
-import data from './soil.csv';
+import data from './soil.json';
 
 import { mapProp } from './mapProp.js';
 import { render } from './mapFunctions.js';
