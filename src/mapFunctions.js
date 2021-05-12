@@ -7,14 +7,15 @@ function importAll(r) {
   return images;
 }
 
+// Import images
 const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
 
-
+// Setup coordinate
 const newCoordinate = (newName,lngStart,coordinates) => {
   return new google.maps.LatLng(parseFloat(coordinates),parseFloat(coordinates.substr(lngStart)));
 }
 
-// Parse coordinates function
+// Parse coordinates
 const parseCoordinates = (newName,coordinates) => {
 
   // Determine LatLng placement
@@ -44,19 +45,9 @@ const parseCoordinates = (newName,coordinates) => {
   };
 }
 
+// Window placement for DT
 const windowOffset = windowPlacement => {
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    // switch(windowPlacement) {
-    //   case 'r':
-    //     return new google.maps.Size(0,0);
-    //   case 'l':
-    //     return  new google.maps.Size(0,0);
-    //   case 't':
-    //     return  new google.maps.Size(0,20);
-    //   case 'b':
-    //     return  new google.maps.Size(0,650);
-    // }
-  } else {
+  if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     switch(windowPlacement) {
       case 'r':
         return new google.maps.Size(300,330);
@@ -70,22 +61,22 @@ const windowOffset = windowPlacement => {
   }
 }
 
+// Get photo
 const photoCheck = trip => {
-  if(trip.Photo !== null) {
-    return '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '"><br><br>';
-  } else {
-    return '';
-  };
+  return trip.Photo ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '"><br><br>' : '';
 }
 
+// Get photo album
 const photoAlbumCheck = trip => {
-  if (trip.PhotoAlbum !== null) {
-    return `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p><br><br>`
-  } else {
-    return `<div>`
-  }
+  return trip.PhotoAlbum ? `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p><br><br>` : `<div>`;
 }
 
+// Get people seen
+const peopleCheck = trip => {
+  return trip.People ? `<div><p><b>People seen: </b>${trip.People}</p></div>` : '';
+}
+
+// Prep marker
 const makeMarker = (trip, points) => {
   return new google.maps.Marker({
     position: points[0],
@@ -96,43 +87,30 @@ const makeMarker = (trip, points) => {
     Id: `${trip.Id}`,
     basicInfo:`
       <div class="map-window">
-        <div><h1>${trip.Trip} </h1><h2>${trip.City}</h2></div>
+        <div>
+          <h1>${trip.Trip} </h1>
+          <h2>${trip.City}</h2>
+        </div>
         ${photoCheck(trip)}
         <div>
           <p><b>${trip.From} - ${trip.To}</b></p>
-        </div>`,
-
-    locations:`<div><p><b>Places visited</b>: ${trip.Locations}</p></div>`,
-    photos:trip.PhotoAlbum,
-    morePhotos: photoAlbumCheck(trip),
-    people:trip.People,
-    peopleInsert:`<div><p><b>People seen: </b>${trip.People}</p></div>`,
-    description:`<div><p>${trip.Description}</p></div></div>`,
+        </div>
+        ${peopleCheck(trip)}
+        ${photoAlbumCheck(trip)}
+        <div><p><b>Places visited</b>: ${trip.Locations}</p></div>
+        <div>
+          <p>${trip.Description}</p>
+        </div>
+      </div>
+    `,
     buildPath:points.slice(1)
   });
 }
 
-const infoWindowContent = marker => {
-  if (marker.photos != "") {
-    if (marker.people !== null) {
-      return marker.basicInfo + marker.peopleInsert + marker.morePhotos + marker.locations + marker.description;
-    } else {
-      return marker.basicInfo + marker.morePhotos + marker.locations + marker.description;
-    }
-
-  // Without people visited
-  } else {
-    if (marker.people !== null) {
-      return marker.basicInfo + marker.peopleInsert + marker.locations + marker.description;
-    } else {
-      return marker.basicInfo + marker.locations + marker.description;
-    }
-  };
-}
-
+// Build window
 const makeInfoWindow = (marker, points) => {
   return new google.maps.InfoWindow({
-    content: infoWindowContent(marker),
+    content: marker.basicInfo,
     position: points[0],
     maxWidth: 560,
     pixelOffset: marker.offset,
@@ -180,7 +158,7 @@ const makeCluster = (map, markers) => {
   return new MarkerClusterer(map, markers, mcOptions);
 }
 
-
+// Render map
 const render = (data, map) => {
   let activeWindow = false;
   let tripPath = "";
@@ -191,14 +169,10 @@ const render = (data, map) => {
     const dataLocations = [trip.LatLng, trip.One, trip.Two, trip.Three, trip.Four, trip.Five, trip.Six, trip.Seven, trip.Eight, trip.Nine, trip.Ten, trip.Eleven, trip.Twelve, trip.Thirteen];
     let points = [];
 
-    const convertLocation = (location, index) => {
-      if (location !== null) {
-        points.push(parseCoordinates(index,location));
-      }
-    }
-
     // Convert LatLng into Google Maps coordinates
-    dataLocations.forEach(convertLocation);
+    dataLocations.forEach((location, index) => {
+      location && points.push(parseCoordinates(index,location));
+    });
 
     // Set markers
     const marker = makeMarker(trip, points);
