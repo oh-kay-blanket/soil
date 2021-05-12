@@ -1,6 +1,6 @@
 body {
   margin: 0px auto;
-  font-family: "Open sans", sans;
+  font-family: 'Open Sans', sans-serif;
   background-color: #f8f8f8;
   color: #222;
 }
@@ -15,7 +15,7 @@ h2 {
 }
 
 p {
-  font-family: "Open sans", sans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
@@ -52,7 +52,7 @@ a:hover {
 
 /* Remove pointer on window */
 .gm-style {
-  font-family: 'Open sans', sans;
+  font-family: 'Open Sans', sans;
 }
 
 .gm-style .gm-style-iw-t::after {
