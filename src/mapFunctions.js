@@ -93,7 +93,7 @@ const makeMarker = (trip, points) => {
         </div>
         ${photoCheck(trip)}
         <div>
-          <p><b>${trip.From} - ${trip.To}</b></p>
+          <p class="dates">${trip.From} - ${trip.To}</p>
         </div>
         ${peopleCheck(trip)}
         ${photoAlbumCheck(trip)}
@@ -136,7 +136,7 @@ const drawPath = (marker) => {
   if(marker.pathMarker1 != "") {
     return new google.maps.Polyline({
       path: marker.buildPath,
-      strokeColor: "#786651",
+      strokeColor: "#bc2e2977",
       strokeOpacity: 0.8,
       strokeWeight: 3,
     });

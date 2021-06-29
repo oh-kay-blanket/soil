@@ -21,12 +21,20 @@ p {
 
 a {
   text-decoration: none;
-  color: #786651;
+  /* color: #786651; */
+  color: #d8534f;
 }
 
 a:hover {
   text-decoration: none;
-  color: #333;
+  color: #bc2e29;
+}
+
+.dates {
+  font-weight: 800;
+  /* font-weight: 200;
+  font-style: italic;
+  color: #555; */
 }
 
 /* .map {
@@ -61,6 +69,12 @@ a:hover {
 
 .gm-style .gm-style-iw {
   font-weight: 400;
+}
+
+@media (min-width: 546px) {
+  .gm-style .gm-style-iw {
+    max-width: 480px !important;
+  }
 }
 
 @media (max-width: 545px) {
