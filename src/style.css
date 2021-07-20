@@ -1,6 +1,6 @@
 body {
   margin: 0px auto;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #f8f8f8;
   color: #222;
 }
@@ -10,12 +10,15 @@ body {
   height: 100vh;
 }
 
+h1, h2, h3, h4, p {
+  font-family: 'Roboto', sans-serif;
+}
+
 h2 {
   font-weight: 400;
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
 
@@ -60,7 +63,7 @@ a:hover {
 
 /* Remove pointer on window */
 .gm-style {
-  font-family: 'Open Sans', sans;
+  font-family: 'Roboto', sans;
 }
 
 .gm-style .gm-style-iw-t::after {
