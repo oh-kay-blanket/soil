@@ -80,7 +80,9 @@ const peopleCheck = trip => {
 const makeMarker = (trip, points) => {
   return new google.maps.Marker({
     position: points[0],
-		icon: icon,
+		icon: {
+      url: icon
+    },
 		color: '#786651',
 		offset: windowOffset(trip.WindowPlacement),
     title:`${trip.City}`,
