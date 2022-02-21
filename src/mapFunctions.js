@@ -68,7 +68,7 @@ const photoCheck = trip => {
 
 // Get photo album
 const photoAlbumCheck = trip => {
-  return trip.PhotoAlbum ? `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p><br><br>` : `<div>`;
+  return trip.PhotoAlbum ? `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p>` : `<div>`;
 }
 
 // Get people seen
@@ -98,8 +98,8 @@ const makeMarker = (trip, points) => {
           <p class="dates">${trip.From} - ${trip.To}</p>
         </div>
         ${peopleCheck(trip)}
-        ${photoAlbumCheck(trip)}
         <div><p><b>Places visited</b>: ${trip.Locations}</p></div>
+        ${photoAlbumCheck(trip)}
         <div>
           <p>${trip.Description}</p>
         </div>

@@ -14,6 +14,10 @@ h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
 
+h1, h2 {
+  margin: .5em 0;
+}
+
 h2 {
   font-weight: 400;
 }
@@ -35,9 +39,12 @@ a:hover {
 
 .dates {
   font-weight: 800;
-  /* font-weight: 200;
-  font-style: italic;
-  color: #555; */
+}
+
+.list-item {
+  padding: .5em .8em 0 .8em;
+  /* color: #666; */
+  display: block;
 }
 
 /* .map {
@@ -55,8 +62,8 @@ a:hover {
 }
 
 .map-window h1, .map-window h2, .map-window h3, .map-window h4, .map-window p {
-  display: inline;
-  float: none;
+  /* display: inline; */
+  /* float: none; */
   text-align: left;
   width: auto;
 }
@@ -88,8 +95,10 @@ a:hover {
 
 .gm-style .gm-style-iw-c {
   background-color: #fefefe;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px #333c;
+  border-radius: 20px;
+  box-shadow: 2px 2px 1px #333c;
+  border: 1px solid #ccc;
+  padding: 4px;
 }
 
 .gm-style-iw button img {
@@ -98,7 +107,7 @@ a:hover {
 
 @media only screen and (max-width: 1500px) {
   .gm-style .gm-style-iw p {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
