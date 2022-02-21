@@ -63,17 +63,22 @@ const windowOffset = windowPlacement => {
 
 // Get photo
 const photoCheck = trip => {
-  return trip.Photo ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '"><br><br>' : '';
+  return trip.Photo ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '">' : '';
 }
 
 // Get photo album
 const photoAlbumCheck = trip => {
-  return trip.PhotoAlbum ? `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p>` : `<div>`;
+  return trip.PhotoAlbum ? `<div><p><a href="${trip.PhotoAlbum}" target="_blank">More photos</a></p></div>` : ``;
 }
 
-// Get people seen
+// Get people
 const peopleCheck = trip => {
-  return trip.People ? `<div><p><b>People seen: </b>${trip.People}</p></div>` : '';
+  return trip.People ? `<div><p><b>People: </b>${trip.People}</p></div>` : '';
+}
+
+// Get places
+const placesCheck = trip => {
+  return trip.Locations ? `<div><p><b>Places</b>: ${trip.Locations}</p></div>` : '';
 }
 
 // Prep marker
@@ -94,12 +99,12 @@ const makeMarker = (trip, points) => {
           <h2>${trip.City}</h2>
         </div>
         ${photoCheck(trip)}
+        ${photoAlbumCheck(trip)}
         <div>
           <p class="dates">${trip.From} - ${trip.To}</p>
         </div>
         ${peopleCheck(trip)}
-        <div><p><b>Places visited</b>: ${trip.Locations}</p></div>
-        ${photoAlbumCheck(trip)}
+        ${placesCheck(trip)}
         <div>
           <p>${trip.Description}</p>
         </div>

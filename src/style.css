@@ -14,8 +14,14 @@ h1, h2, h3, h4, p {
   font-family: 'Roboto', sans-serif;
 }
 
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.4em;
+  /* color: #d8534f; */
+}
+
 h1, h2 {
-  margin: .5em 0;
+  margin: 0;
 }
 
 h2 {
@@ -28,7 +34,6 @@ p {
 
 a {
   text-decoration: none;
-  /* color: #786651; */
   color: #d8534f;
 }
 
@@ -43,7 +48,7 @@ a:hover {
 
 .list-item {
   padding: .5em .8em 0 .8em;
-  /* color: #666; */
+  font-weight: 500;
   display: block;
 }
 
@@ -96,8 +101,8 @@ a:hover {
 .gm-style .gm-style-iw-c {
   background-color: #fefefe;
   border-radius: 20px;
-  box-shadow: 2px 2px 1px #333c;
-  border: 1px solid #ccc;
+  box-shadow: 1px 1px #d8534f, 2px 2px #d8534f, 3px 3px #d8534f;
+  border: 1px solid #d8534f;
   padding: 4px;
 }
 
