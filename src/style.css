@@ -1,4 +1,6 @@
+/* Global */
 body {
+  position: relative;
   margin: 0px auto;
   font-family: 'Roboto', sans-serif;
   background-color: #f8f8f8;
@@ -42,39 +44,24 @@ a:hover {
   color: #bc2e29;
 }
 
-.dates {
-  font-weight: 800;
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 450px;
+  max-width: 100vw;
+  box-sizing: border-box;
+  border-radius: 0 10px 10px 0;
+  background-color: #f8f8f8;
+  box-shadow: 1px 1px #d8534f, 2px 2px #d8534f, 3px 3px #d8534f;
+  padding: 4px;
+  overflow-y: auto;
 }
 
-.list__container {
-  display: block;
-  background-color: #fcfaf4;
-  margin: 10px;
-  padding: 18px 9px;
-}
-
-.menu {
-  text-align: center;
-}
-
-.list__title {
-  font-weight: 600;
-  font-size: 1.2rem;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.list__item {
-  display: block;
-  padding: .5em 1em .5em 1em;
-  letter-spacing: .5px;
-  color: #444;
-  font-size: .92rem;
-}
-
-/* .map {
-  height: 80vh;
-  width: 100%;
-} */
+/* Old Window */
 
 .map-window {
   max-height: 60vh;
@@ -137,4 +124,35 @@ a:hover {
 
 .map-panel-photo {
   width: 100%;
+}
+
+/* In Window */
+
+.dates {
+  font-weight: 800;
+}
+
+.list__container {
+  display: block;
+  background-color: #fcfaf4;
+  margin: 10px;
+  padding: 18px 9px;
+}
+
+.menu {
+  text-align: center;
+}
+
+.list__title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.list__item {
+  display: block;
+  padding: .5em 1em .5em 1em;
+  letter-spacing: .5px;
+  color: #444;
+  font-size: .92rem;
 }

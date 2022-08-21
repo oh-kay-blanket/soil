@@ -114,6 +114,18 @@ const makeMarker = (trip, points) => {
   });
 }
 
+// Build overlay
+const makeOverlay = (marker, points) => {
+  document.querySelector('.overlay').innerHTML = marker.basicInfo;
+  // return new google.maps.InfoWindow({
+  //   content: marker.basicInfo,
+  //   position: points[0],
+  //   maxWidth: 560,
+  //   pixelOffset: marker.offset,
+  //   Id: marker.Id,
+  // });
+}
+
 // Build window
 const makeInfoWindow = (marker, points) => {
   return new google.maps.InfoWindow({
@@ -190,9 +202,10 @@ const render = (data, map) => {
 
       // Windows
       clearOldWindows(activeWindow);
-      const infowindow = makeInfoWindow(marker, points);
-      infowindow.open(map, marker);
-      activeWindow = infowindow;
+      makeOverlay(marker, points);
+      // const infowindow = makeInfoWindow(marker, points);
+      // infowindow.open(map, marker);
+      // activeWindow = infowindow;
 
       // Paths
       clearPath(tripPath);
