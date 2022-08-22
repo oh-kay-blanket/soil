@@ -4,6 +4,7 @@ const mapProp = {
     disableDefaultUI: true,
     zoomControl: false,
     fullscreenControl: true,
+    gestureHandling: "greedy",
     styles: [
     {
         "featureType": "all",
