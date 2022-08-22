@@ -1,4 +1,5 @@
-import './style.css';
+// import './style.css';
+import './sass/style.scss';
 import data from './soil.json';
 
 import { mapProp } from './mapProp.js';

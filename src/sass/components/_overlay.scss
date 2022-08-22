@@ -1,0 +1,86 @@
+@use '../mixins/media' as *;
+
+.overlay {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    padding: 4px;
+    overflow-y: auto;
+
+    @include mobile {
+        visibility: hidden;
+        bottom: 0;
+        width: 100vw;
+        height: 0;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0 -1px #d8534f, 0 -2px #d8534f, 0 -3px #d8534f;
+        transition: visibility 0s linear 0.15s, height .15s linear;
+
+        &.open {
+            visibility: visible;
+            height: 70vh;
+            transition: visibility 0s, height .15s linear;
+        }
+    }
+
+    @include desktop {
+        top: 0;
+        left: -453px;
+        height: 100vh;
+        width: 450px;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 1px 1px #d8534f, 2px 2px #d8534f, 3px 3px #d8534f;
+        transition: left .15s linear;
+
+        &.open {
+            left: 0;
+        }
+    }
+
+    .close-overlay {
+        display: block;
+        float: right;
+        margin: 5px;
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        text-align: center;
+        color: #000;
+    }
+
+    .map-panel-photo {
+        width: 100%;
+      }
+      
+      /* In Window */
+      
+      .dates {
+        font-weight: 800;
+      }
+      
+      .list__container {
+        display: block;
+        background-color: #fcfaf4;
+        margin: 10px;
+        padding: 18px 9px;
+      }
+      
+      .menu {
+        text-align: center;
+      }
+      
+      .list__title {
+        font-weight: 600;
+        font-size: 1.2rem;
+        font-family: 'Permanent Marker', cursive;
+      }
+      
+      .list__item {
+        display: block;
+        padding: .5em 1em .5em 1em;
+        letter-spacing: .5px;
+        color: #444;
+        font-size: .92rem;
+      }
+}

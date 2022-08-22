@@ -114,16 +114,21 @@ const makeMarker = (trip, points) => {
   });
 }
 
+// Overlay
+const overlay = document.querySelector('.overlay');
+const overlayInner = document.querySelector('.overlay__inner');
+// document.querySelector('.close-overlay').addEventListener("click", hideOverlay); 
+
 // Build overlay
 const makeOverlay = (marker, points) => {
-  document.querySelector('.overlay').innerHTML = marker.basicInfo;
-  // return new google.maps.InfoWindow({
-  //   content: marker.basicInfo,
-  //   position: points[0],
-  //   maxWidth: 560,
-  //   pixelOffset: marker.offset,
-  //   Id: marker.Id,
-  // });
+  overlayInner.innerHTML = marker.basicInfo;
+  overlay.classList.add('open');
+  overlay.scrollTo(0, 0);
+}
+
+const hideOverlay = () => {
+  overlay.classList.remove('open');
+  console.log('hiding overlay');
 }
 
 // Build window
@@ -201,8 +206,10 @@ const render = (data, map) => {
     google.maps.event.addListener(marker, 'click', function() {
 
       // Windows
-      clearOldWindows(activeWindow);
+      // clearOldWindows(activeWindow);
       makeOverlay(marker, points);
+      console.log(marker.position);
+      map.setCenter(marker.position); 
       // const infowindow = makeInfoWindow(marker, points);
       // infowindow.open(map, marker);
       // activeWindow = infowindow;
@@ -214,7 +221,8 @@ const render = (data, map) => {
 
       // Close all windows upon map click
       google.maps.event.addListener(map, 'click', function() {
-        infowindow.close();
+        hideOverlay();
+        // infowindow.close();
         clearPath(tripPath);
       });
     });
