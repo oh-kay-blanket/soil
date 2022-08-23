@@ -20,7 +20,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-        document.querySelector('.close-overlay').addEventListener("click", (function(){document.querySelector('.overlay').classList.remove('open');}));
+        const overlay = document.querySelector('.overlay');
+        // const overlayInitialHeight = overlay.offsetHeight;
+        // const overlayScroll = (e) => {
+        //     console.log(overlay.scrollTop);
+        //     overlay.style.height = 'calc(' + getComputedStyle(overlay).height + ' + 1px)';
+        // }
+        
+        document.querySelector('.close-overlay').addEventListener("click", (function(){overlay.classList.remove('open');}));
+        overlay.addEventListener("scroll",overlayScroll);
     </script>
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>

@@ -3,7 +3,7 @@ const mapProp = {
     zoom: 2,
     disableDefaultUI: true,
     zoomControl: false,
-    fullscreenControl: true,
+    fullscreenControl: false,
     gestureHandling: "greedy",
     styles: [
     {
