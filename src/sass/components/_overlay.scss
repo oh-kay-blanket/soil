@@ -12,16 +12,50 @@
         visibility: hidden;
         bottom: 0;
         width: 100vw;
+        max-width: 450px;
         height: 0;
         border-radius: 10px 10px 0 0;
         box-shadow: 0 0 5px #0007;
         transition: visibility 0s linear 0.15s, height .15s linear;
 
+        .overlay-close {
+          visibility: hidden;
+          height: 0;
+          // transition: display linear 0.15s, height .15s linear;
+        }
+
+        &.peek {
+            visibility: visible;
+            height: 40vh;
+            transition: visibility 0s, height .15s linear;
+            overflow-y: hidden;
+
+            .overlay-size {
+              margin: .3em auto;
+              width: 10%;
+              background-color: #ccc;
+              border-radius: 15px;
+              height: 4px;
+            }
+        }
+
         &.open {
             visibility: visible;
-            height: 48vh;
+            height: 98vh;
             transition: visibility 0s, height .15s linear;
             overflow-y: auto;
+
+            .overlay-size {
+              display: none;
+            }
+
+            .overlay-close {
+              display: flex;
+              visibility: visible;
+              height: auto;
+              justify-content: flex-end;
+              transition: visibility 0s, height .15s linear;
+            }
         }
     }
 
@@ -35,20 +69,13 @@
         box-shadow: 3px 3px 5px #0007;
         transition: left .15s linear;
 
-        &.open {
+        &.peek {
             left: 8px;
         }
-    }
 
-    .close-overlay {
-        display: block;
-        float: right;
-        margin: 5px;
-        width: 20px;
-        height: 20px;
-        z-index: 2;
-        text-align: center;
-        color: #000;
+        .overlay-size, .overlay-close {
+          display: none;
+        }
     }
 
     .map-panel-photo {

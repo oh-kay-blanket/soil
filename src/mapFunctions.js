@@ -45,22 +45,6 @@ const parseCoordinates = (newName,coordinates) => {
   };
 }
 
-// Window placement for DT
-const windowOffset = windowPlacement => {
-  if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    switch(windowPlacement) {
-      case 'r':
-        return new google.maps.Size(300,330);
-      case 'l':
-        return  new google.maps.Size(-300,330);
-      case 't':
-        return  new google.maps.Size(0,20);
-      case 'b':
-        return  new google.maps.Size(0,650);
-    }
-  }
-}
-
 // Get photo
 const photoCheck = trip => {
   return trip.Photo ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '">' : '';
@@ -89,7 +73,6 @@ const makeMarker = (trip, points) => {
       url: icon
     },
 		color: '#786651',
-		offset: windowOffset(trip.WindowPlacement),
     title:`${trip.City}`,
     Id: `${trip.Id}`,
     basicInfo:`
@@ -117,35 +100,25 @@ const makeMarker = (trip, points) => {
 // Overlay
 const overlay = document.querySelector('.overlay');
 const overlayInner = document.querySelector('.overlay__inner');
-// document.querySelector('.close-overlay').addEventListener("click", hideOverlay); 
 
 // Build overlay
-const makeOverlay = (marker, points) => {
+const makeOverlay = (marker) => {
   overlayInner.innerHTML = marker.basicInfo;
-  overlay.classList.add('open');
+  overlay.classList.add('peek');
+  const overlayPeeking = document.querySelector('.overlay.peek');
+  overlayPeeking.addEventListener("click", function(){overlay.classList.add('open')});
   overlay.scrollTo(0, 0);
-}
-
-const hideOverlay = () => {
-  overlay.classList.remove('open');
-  console.log('hiding overlay');
-}
-
-// Build window
-const makeInfoWindow = (marker, points) => {
-  return new google.maps.InfoWindow({
-    content: marker.basicInfo,
-    position: points[0],
-    maxWidth: 560,
-    pixelOffset: marker.offset,
-    Id: marker.Id,
+  const overlayClose = document.querySelector('.overlay-close');
+  console.log(overlayClose);
+  overlayClose.addEventListener("click", function(e){
+    hideOverlay();
+    e.stopPropagation();
   });
 }
 
-const clearOldWindows = activeWindow => {
-  if (activeWindow) {
-    return activeWindow.close();
-  }
+const hideOverlay = () => {
+  document.querySelector('.overlay').classList.remove('open','peek');
+  console.log('hiding overlay');
 }
 
 // Clear previous trip paths
@@ -184,11 +157,10 @@ const makeCluster = (map, markers) => {
 
 // Render map
 const render = (data, map) => {
-  let activeWindow = false;
   let tripPath = "";
   let markers = [];
 
-  // Place each trip
+  // Set up markers
   data.forEach(trip => {
     const dataLocations = [trip.LatLng, trip.One, trip.Two, trip.Three, trip.Four, trip.Five, trip.Six, trip.Seven, trip.Eight, trip.Nine, trip.Ten, trip.Eleven, trip.Twelve, trip.Thirteen];
     let points = [];
@@ -206,29 +178,27 @@ const render = (data, map) => {
     google.maps.event.addListener(marker, 'click', function() {
 
       // Windows
-      // clearOldWindows(activeWindow);
       makeOverlay(marker, points);
       console.log(marker.position);
       map.setCenter(marker.position); 
-      // const infowindow = makeInfoWindow(marker, points);
-      // infowindow.open(map, marker);
-      // activeWindow = infowindow;
 
       // Paths
       clearPath(tripPath);
       tripPath = drawPath(marker);
       setPath(map, marker, tripPath);
 
-      // Close all windows upon map click
-      google.maps.event.addListener(map, 'click', function() {
-        hideOverlay();
-        // infowindow.close();
-        clearPath(tripPath);
-      });
     });
     markers.push(marker);
-  })
+  });
+
+  // Make clusters
   makeCluster(map, markers);
+
+  // Close overlay on map click
+  google.maps.event.addListener(map, 'click', function() {
+    hideOverlay();
+    clearPath(tripPath);
+  });
 }
 
-export { render };
+export { render, hideOverlay };
