@@ -10,7 +10,8 @@
 <body>
     <section id="root"></section>
     <section class="overlay">
-        <i class="close-overlay fa fa-close fa-lg"></i>
+        <div class="overlay-size"></div>
+        <i class="overlay-close fa fa-close fa-lg"></i>
         <div class="overlay__inner"></div>
     </section>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF6VqHi-RwohlHcNoUSSpzGtZ41iKPOVk"></script>
@@ -20,15 +21,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
-        const overlay = document.querySelector('.overlay');
-        // const overlayInitialHeight = overlay.offsetHeight;
-        // const overlayScroll = (e) => {
-        //     console.log(overlay.scrollTop);
-        //     overlay.style.height = 'calc(' + getComputedStyle(overlay).height + ' + 1px)';
-        // }
+        // const overlay = document.querySelector('.overlay');
         
-        document.querySelector('.close-overlay').addEventListener("click", (function(){overlay.classList.remove('open');}));
-        overlay.addEventListener("scroll",overlayScroll);
+        // document.querySelector('.overlay-close').addEventListener("click", function(){overlay.classList.remove('peek', 'open');});
     </script>
 <script type="text/javascript" src="bundle.js"></script></body>
 </html>
