@@ -5,41 +5,38 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #f8f8f8;
     color: #222;
-  }
+    font-size: 16px;
+}
   
-  #root {
+#root {
     width: 100vw;
     height: 100vh;
-  }
+}
   
-  h1, h2, h3, h4, p {
+h1, h2, h3, h4, p {
     font-family: 'Roboto', sans-serif;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-family: 'Permanent Marker', cursive;
-    font-size: 2.4em;
+    font-size: 1.6rem;
     /* color: #d8534f; */
-  }
-  
-  h1, h2 {
-    margin: 0;
-  }
-  
-  h2 {
+}
+
+h1, h2, h3 {
+    margin: 0 0 .25em 0;
+}
+
+h2, h3 {
     font-weight: 400;
-  }
-  
-  p {
-    font-size: 16px;
-  }
-  
-  a {
+}
+
+a {
     text-decoration: none;
     color: #d8534f;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     text-decoration: none;
     color: #bc2e29;
-  }
+}

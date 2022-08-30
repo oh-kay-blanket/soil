@@ -79,13 +79,13 @@ const makeMarker = (trip, points) => {
       <div class="map-window">
         <div>
           <h1>${trip.Trip} </h1>
-          <h2>${trip.City}</h2>
+          <h3>${trip.City}</h3>
         </div>
-        ${photoCheck(trip)}
-        ${photoAlbumCheck(trip)}
         <div>
           <p class="dates">${trip.From} - ${trip.To}</p>
         </div>
+        ${photoCheck(trip)}
+        ${photoAlbumCheck(trip)}
         ${peopleCheck(trip)}
         ${placesCheck(trip)}
         <div>
@@ -106,12 +106,11 @@ const makeOverlay = (marker) => {
   overlayInner.innerHTML = marker.basicInfo;
   overlay.classList.add('peek');
   overlay.scrollTo(0, 0);
-  const overlayClose = document.querySelector('.overlay-close');
-  console.log(overlayClose);
-  overlayClose.addEventListener("click", function(e) {
-    hideOverlay();
-    e.stopPropagation();
-  });
+  // const overlayClose = document.querySelector('.overlay-close');
+  // overlayClose.addEventListener("click", function(e) {
+  //   hideOverlay();
+  //   e.stopPropagation();
+  // });
 
   // Peeking
   const overlayPeeking = document.querySelector('.overlay.peek');
@@ -120,7 +119,7 @@ const makeOverlay = (marker) => {
 
   hammerPeeking.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   hammerPeeking.on('swipe', function(e) {
-    if (e.offsetDirection == 8) {
+    if (e.offsetDirection == 8 && window.innerWidth < 769) {
       overlay.classList.add('open');
       overlay.classList.remove('peek');
       
@@ -130,7 +129,7 @@ const makeOverlay = (marker) => {
     
       hammerOpen.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
       hammerOpen.on('swipe', function(e) {
-        if (e.offsetDirection == 16) {
+        if (e.offsetDirection == 16 && window.innerWidth < 769) {
           overlay.classList.remove('open', 'peek');
         } 
       });
