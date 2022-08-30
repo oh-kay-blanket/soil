@@ -105,15 +105,38 @@ const overlayInner = document.querySelector('.overlay__inner');
 const makeOverlay = (marker) => {
   overlayInner.innerHTML = marker.basicInfo;
   overlay.classList.add('peek');
-  const overlayPeeking = document.querySelector('.overlay.peek');
-  overlayPeeking.addEventListener("click", function(){overlay.classList.add('open')});
   overlay.scrollTo(0, 0);
   const overlayClose = document.querySelector('.overlay-close');
   console.log(overlayClose);
-  overlayClose.addEventListener("click", function(e){
+  overlayClose.addEventListener("click", function(e) {
     hideOverlay();
     e.stopPropagation();
   });
+
+  // Peeking
+  const overlayPeeking = document.querySelector('.overlay.peek');
+  var hammerPeeking = new Hammer(overlayPeeking);
+  // overlayPeeking.addEventListener("click", function(){overlay.classList.add('open')});
+
+  hammerPeeking.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+  hammerPeeking.on('swipe', function(e) {
+    if (e.offsetDirection == 8) {
+      overlay.classList.add('open');
+      overlay.classList.remove('peek');
+      
+      // Hammer Open
+      const overlayOpen = document.querySelector('.overlay.open');
+      var hammerOpen = new Hammer(overlayOpen);
+    
+      hammerOpen.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+      hammerOpen.on('swipe', function(e) {
+        if (e.offsetDirection == 16) {
+          overlay.classList.remove('open', 'peek');
+        } 
+      });
+    } 
+  });
+
 }
 
 const hideOverlay = () => {
