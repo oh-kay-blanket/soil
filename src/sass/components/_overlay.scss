@@ -20,15 +20,9 @@
         transition: visibility 0s linear 0.15s, height .15s linear;
         overflow-y: hidden;
 
-        .overlay-close {
-            visibility: hidden;
-            height: 0;
-            // transition: display linear 0.15s, height .15s linear;
-        }
-
         &.peek {
             visibility: visible;
-            height: 40vh;
+            height: 30vh;
             transition: visibility 0s, height .15s linear;
             
             .overlay-size {
@@ -38,10 +32,6 @@
                 border-radius: 15px;
                 height: 4px;
             }
-            
-            .overlay__inner {
-                // overflow-y: hidden;
-            }
         }
 
         &.open {
@@ -50,23 +40,16 @@
             transition: visibility 0s, height .15s linear;
             overflow-y: auto;
 
-            .overlay-size {
-                // display: none;
+            &.top {
+                touch-action: pan-down !important;
             }
 
-            .overlay-close {
-                display: flex;
-                visibility: visible;
-                height: auto;
-                justify-content: flex-end;
-                transition: visibility 0s, height .15s linear;
+            &.not-top {
+                touch-action: pan-y !important;
             }
 
             .overlay__inner {
-                // overflow-y: auto;
-                // height: 100%;
-                // overscroll-behavior: contain;
-                // touch-action: pan-x;
+                padding-bottom: 2em;
             }
         }
     }
@@ -85,7 +68,7 @@
             left: 8px;
         }
 
-        .overlay-size, .overlay-close {
+        .overlay-size{
             display: none;
         }
     }

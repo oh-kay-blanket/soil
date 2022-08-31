@@ -99,82 +99,52 @@ const makeMarker = (trip, points) => {
 
 // Overlay
 const overlay = document.querySelector('.overlay');
-const overlayInner = document.querySelector('.overlay__inner');
-
-// Set up hammer close
-var hammerClose = new Hammer(overlay);
-hammerClose.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-hammerClose.on('swipe', function(e) {
-  if (e.offsetDirection == 16 && window.innerWidth < 769) {
-    hideOverlay();
-  } 
-});
-
-const overlaySwipe = () => {
-
-  if (overlay.scrollTop == 0) {
-      console.log('at the top!');
-    
-      hammerClose.on('swipe', function(e) {
-        if (e.offsetDirection == 16 && window.innerWidth < 769) {
-          hideOverlay();
-        } 
-      });
-  } else {
-    console.log(overlay.scrollTop);
-    hammerClose.off('swipe');
-    hammerClose.on('pan', function(e) {
-      if (e.offsetDirection == 16 && window.innerWidth < 769) {
-        console.log(overlay.scrollTop);
-        overlay.scrollBy(0, -1)
-      } 
-    });
-  }
-}
-overlay.addEventListener('scroll', overlaySwipe);
 
 // Build overlay
 const makeOverlay = (marker) => {
-  overlayInner.innerHTML = marker.basicInfo;
-  overlay.classList.add('peek');
+  document.querySelector('.overlay__inner').innerHTML = marker.basicInfo;
+  overlay.classList.add('peek', 'top');
   overlay.scrollTo(0, 0);
-  // const overlayClose = document.querySelector('.overlay-close');
-  // overlayClose.addEventListener("click", function(e) {
-  //   hideOverlay();
-  //   e.stopPropagation();
-  // });
-
-  // Peeking
-  const overlayPeeking = document.querySelector('.overlay.peek');
-  var hammerPeeking = new Hammer(overlayPeeking);
-  // overlayPeeking.addEventListener("click", function(){overlay.classList.add('open')});
-
-  // Listen for swipe up while peeking
-  hammerPeeking.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-  hammerPeeking.on('swipe', function(e) {
-    if (e.offsetDirection == 8 && window.innerWidth < 769) {
-      overlay.classList.add('open', 'top');
-      overlay.classList.remove('peek');
-      
-      // Hammer Open
-      const overlayOpen = document.querySelector('.overlay.open.top');
-      // var hammerOpen = new Hammer(overlayOpen);
-    
-      // hammerOpen.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-      // hammerOpen.on('swipe', function(e) {
-      //   if (e.offsetDirection == 16 && window.innerWidth < 769) {
-      //     hideOverlay();
-      //   } 
-      // });
-    } 
-  });
-
 }
 
+// Hide overlay
 const hideOverlay = () => {
-  document.querySelector('.overlay').classList.remove('open','peek');
-  console.log('hiding overlay');
+  document.querySelector('.overlay').classList.remove('open','peek', 'top', 'not-top');
 }
+
+// Set up hammer
+var hammer = new Hammer(overlay);
+hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+
+// Handle swipe
+hammer.on('swipe', function(e) {
+
+  // down
+  if (e.offsetDirection == 16 && window.innerWidth < 769) {
+    overlay.classList.add('peek');
+    overlay.classList.remove('open');
+
+  // up
+  } else if (e.offsetDirection == 8 && window.innerWidth < 769) {
+    overlay.classList.add('open', 'top');
+    overlay.classList.remove('peek');
+  }
+  
+});
+
+// Listen for scroll
+const scrollListen = () => {
+
+  if (overlay.scrollTop == 0) {
+      overlay.classList.add('top');
+      overlay.classList.remove('not-top');
+  } else {
+      overlay.classList.remove('top');
+      overlay.classList.add('not-top');
+  }
+}
+overlay.addEventListener('scroll', scrollListen);
+
 
 // Clear previous trip paths
 const clearPath = tripPath => {
@@ -234,7 +204,6 @@ const render = (data, map) => {
 
       // Windows
       makeOverlay(marker, points);
-      console.log(marker.position);
       map.setCenter(marker.position); 
 
       // Paths
