@@ -101,6 +101,38 @@ const makeMarker = (trip, points) => {
 const overlay = document.querySelector('.overlay');
 const overlayInner = document.querySelector('.overlay__inner');
 
+// Set up hammer close
+var hammerClose = new Hammer(overlay);
+hammerClose.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+hammerClose.on('swipe', function(e) {
+  if (e.offsetDirection == 16 && window.innerWidth < 769) {
+    hideOverlay();
+  } 
+});
+
+const overlaySwipe = () => {
+
+  if (overlay.scrollTop == 0) {
+      console.log('at the top!');
+    
+      hammerClose.on('swipe', function(e) {
+        if (e.offsetDirection == 16 && window.innerWidth < 769) {
+          hideOverlay();
+        } 
+      });
+  } else {
+    console.log(overlay.scrollTop);
+    hammerClose.off('swipe');
+    hammerClose.on('pan', function(e) {
+      if (e.offsetDirection == 16 && window.innerWidth < 769) {
+        console.log(overlay.scrollTop);
+        overlay.scrollBy(0, -1)
+      } 
+    });
+  }
+}
+overlay.addEventListener('scroll', overlaySwipe);
+
 // Build overlay
 const makeOverlay = (marker) => {
   overlayInner.innerHTML = marker.basicInfo;
@@ -117,22 +149,23 @@ const makeOverlay = (marker) => {
   var hammerPeeking = new Hammer(overlayPeeking);
   // overlayPeeking.addEventListener("click", function(){overlay.classList.add('open')});
 
+  // Listen for swipe up while peeking
   hammerPeeking.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
   hammerPeeking.on('swipe', function(e) {
     if (e.offsetDirection == 8 && window.innerWidth < 769) {
-      overlay.classList.add('open');
+      overlay.classList.add('open', 'top');
       overlay.classList.remove('peek');
       
       // Hammer Open
-      const overlayOpen = document.querySelector('.overlay.open');
-      var hammerOpen = new Hammer(overlayOpen);
+      const overlayOpen = document.querySelector('.overlay.open.top');
+      // var hammerOpen = new Hammer(overlayOpen);
     
-      hammerOpen.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
-      hammerOpen.on('swipe', function(e) {
-        if (e.offsetDirection == 16 && window.innerWidth < 769) {
-          overlay.classList.remove('open', 'peek');
-        } 
-      });
+      // hammerOpen.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
+      // hammerOpen.on('swipe', function(e) {
+      //   if (e.offsetDirection == 16 && window.innerWidth < 769) {
+      //     hideOverlay();
+      //   } 
+      // });
     } 
   });
 
