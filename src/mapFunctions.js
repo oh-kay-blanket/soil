@@ -1,6 +1,8 @@
 import icon from './img/plunkett-flag.png';
+import iconActive from './img/plunkett-flag_active.png';
 import MarkerClusterer from './markerCluster';
 
+// IMAGES
 function importAll(r) {
   let images = {};
   r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -65,12 +67,16 @@ const placesCheck = trip => {
   return trip.Locations ? `<div><p><b>Places</b>: ${trip.Locations}</p></div>` : '';
 }
 
-// Prep marker
+// Markers
+let markers = [];
+
+// Make marker
 const makeMarker = (trip, points) => {
   return new google.maps.Marker({
     position: points[0],
 		icon: {
-      url: icon
+      url: icon,
+      name: "default"
     },
 		color: '#786651',
     title:`${trip.City}`,
@@ -97,7 +103,18 @@ const makeMarker = (trip, points) => {
   });
 }
 
-// Overlay
+// Reset Markers
+const resetMarkers = () => {
+  let activeMarkers = markers.filter(marker => {
+    return marker.icon.name == "active";
+  })
+  activeMarkers.forEach(marker => {
+    marker.setIcon({url: icon, name: "default"});
+  });
+}
+
+
+// OVERLAY
 const overlay = document.querySelector('.overlay');
 
 // Build overlay
@@ -110,6 +127,7 @@ const makeOverlay = (marker) => {
 // Hide overlay
 const hideOverlay = () => {
   document.querySelector('.overlay').classList.remove('open','peek', 'top', 'not-top');
+  resetMarkers();
 }
 
 // Set up hammer
@@ -183,7 +201,6 @@ const makeCluster = (map, markers) => {
 // Render map
 const render = (data, map) => {
   let tripPath = "";
-  let markers = [];
 
   // Set up markers
   data.forEach(trip => {
@@ -204,7 +221,9 @@ const render = (data, map) => {
 
       // Windows
       makeOverlay(marker, points);
-      map.setCenter(marker.position); 
+      map.panTo(marker.position);
+      resetMarkers();
+      marker.setIcon({url:iconActive, name:"active"});
 
       // Paths
       clearPath(tripPath);
