@@ -3,7 +3,7 @@ import './sass/style.scss';
 import data from './soil.json';
 
 import { mapProp } from './mapProp.js';
-import { render, hideOverlay } from './mapFunctions.js';
+import { render } from './mapFunctions.js';
 
 const map = new google.maps.Map(document.getElementById("root"),mapProp);
 

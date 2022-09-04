@@ -214,7 +214,9 @@ const render = (data, map) => {
 
     // Set markers
     const marker = makeMarker(trip, points);
-    // marker.setMap(map);
+
+    // If not using cluster
+    marker.setMap(map);
 
     // Marker click functionality & build window
     google.maps.event.addListener(marker, 'click', function() {
@@ -235,7 +237,7 @@ const render = (data, map) => {
   });
 
   // Make clusters
-  makeCluster(map, markers);
+  // makeCluster(map, markers);
 
   // Close overlay on map click
   google.maps.event.addListener(map, 'click', function() {
@@ -244,4 +246,4 @@ const render = (data, map) => {
   });
 }
 
-export { render, hideOverlay };
+export { render };
