@@ -1,6 +1,6 @@
 const mapProp = {
-    center:new google.maps.LatLng(0, -110.880497),
-    zoom: 2,
+    center:new google.maps.LatLng(18, -110.880497),
+    zoom: 3,
     disableDefaultUI: true,
     zoomControl: false,
     fullscreenControl: false,
