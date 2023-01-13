@@ -47,7 +47,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#fcfaf4"
             }
         ]
     },
@@ -56,7 +56,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#fcfaf4"
             }
         ]
     },
@@ -104,7 +104,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#fcfaf4"
             }
         ]
     },
@@ -170,7 +170,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#ffffff"
+                "color": "#fcfaf4"
             }
         ]
     }
