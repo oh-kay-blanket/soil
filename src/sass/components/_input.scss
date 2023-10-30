@@ -1,0 +1,44 @@
+@use '../mixins/media' as *;
+
+.input-container {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    padding: 1rem .5rem;
+    opacity: 1;
+    transition: opacity .15s linear, top .15s linear;
+
+    @include desktop {
+        width: fit-content;
+        min-width: 300px;
+        padding: 0;
+    }
+
+    &.hide {
+        opacity: 0;
+        top: -75px;
+        transition: opacity .15s linear, top .15s linear;
+    }
+
+    .input {
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #f8f8f8;
+        padding: 12px;
+        border: 1px solid #d8534f;
+        box-shadow: 0 0 5px #6666;
+        border-radius: 100px;
+
+        @include desktop {
+            margin: 1rem 8px;
+        }
+
+        &:focus {
+            box-shadow: 0 0 5px #666;
+            outline: none;
+        }
+    }
+}
