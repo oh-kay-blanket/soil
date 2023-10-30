@@ -257,7 +257,7 @@ const render = (data, map) => {
         };
 
         inputField.addEventListener("input", inputUpdate);
-        inputField.focus();
+        // inputField.focus();
     }
 
     checkInput();    
@@ -266,7 +266,6 @@ const render = (data, map) => {
     google.maps.event.addListener(map, 'click', function() {
         hideOverlay();
         clearPath(tripPath);
-        document.querySelector(".input").focus();
     });
 }
 
