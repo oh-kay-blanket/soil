@@ -266,7 +266,7 @@ const render = (data, map) => {
     google.maps.event.addListener(map, 'click', function() {
         hideOverlay();
         clearPath(tripPath);
-        map.focus();
+        document.querySelector(".input").blur();
     });
 }
 
