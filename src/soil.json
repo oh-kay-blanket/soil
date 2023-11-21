@@ -1,5 +1,33 @@
 [
   {
+    "City": "Oklahoma City",
+    "Trip": "Bones",
+    "Id": "311",
+    "Photo": "x",
+    "Description": "A nice drive up. First stop is the Museum of Osteology for a really wonderful collection of bones and information. Also they have a house can named Indiana Bones who we got to pet. We stop by the hotel to drop off our stuff and then off to Barkeep for some delicious cocktails. We also get some beautiful amber glasses and Liz a fun Dracula Negroni shirt. Next onto Ma Der for an absolutely killer Lao dinner if crispy rice, sticky rice, jerky, fermented cabbage, red curry fried chicken, beef skewers and funky cocktails. We drop the car off at the hotel, Liz sneaks in a quickie and then we're off to Flamingo Tiki Room for some not amazing tiki drinks. The woman next to us is super friendly and we get chatting for a while. She is Brittany and he is Two Eagles. We close down Flamingo and they invite us to a nearby bar. There is a bar cat! Liz is happy. A drunken bro nearly gets in a fight. I think then the cops come for him. More hanging and chatting with them and then goodnight.<br><br>Up an to Eote for coffee and kolache. It's very busy and just okay flavor wise. Next to Haydeh's for supposedly the best gyro in Oklahoma. I can't speak to that, but it didn't come close to the one we tried in Mesquite. Over to Adam's house to chat for a bit and pick up a couch and then back down to Dallas.",
+    "WindowPlacement": "",
+    "LatLng": "35.364799, -97.441841",
+    "From": "Nov 4, 2023",
+    "To": "Nov 5, 2023",
+    "People": "Indiana Bones",
+    "Locations": "",
+    "NumberInTrip": "",
+    "One": "",
+    "Two": "",
+    "Three": "",
+    "Four": "",
+    "Five": "",
+    "Six": "",
+    "Seven": "",
+    "Eight": "",
+    "Nine": "",
+    "Ten": "",
+    "Eleven": "",
+    "Twelve": "",
+    "Thirteen": "",
+    "PhotoAlbum": ""
+  },
+  {
     "City": "Moorea",
     "Trip": "Something Old, Something New",
     "Id": "310",
@@ -7249,7 +7277,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/WfY922dFc67FUKaM9"
   },
   {
     "City": "Amsterdam",
@@ -7277,7 +7305,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/iaYWGmeMNmKHveu78"
   },
   {
     "City": "Bonn",
@@ -7305,7 +7333,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/iaYWGmeMNmKHveu78"
   },
   {
     "City": "Quedlinburg",
@@ -7333,7 +7361,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/iaYWGmeMNmKHveu78"
   },
   {
     "City": "Berlin",
@@ -7361,7 +7389,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/iaYWGmeMNmKHveu78"
   },
   {
     "City": "Reno",
@@ -7429,7 +7457,7 @@
     "LatLng": "37.760260, -122.434266",
     "From": "Oct 10, 2013",
     "To": "Oct 13, 2013",
-    "People": "Phil",
+    "People": "Phil, Melvin, Katelyn & David",
     "Locations": "",
     "NumberInTrip": "1",
     "One": "",
@@ -7445,7 +7473,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/5ouHBHS4jnFLRNVX6"
   },
   {
     "City": "Santa Barbara",
@@ -7473,7 +7501,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/QW2YiRcXvuion2Wf8"
   },
   {
     "City": "Dublin",
@@ -7501,7 +7529,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/tm7kPKTEFhuD3GpdA"
   },
   {
     "City": "South Downs",
@@ -7529,7 +7557,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/tm7kPKTEFhuD3GpdA"
   },
   {
     "City": "Gent",
@@ -7557,7 +7585,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/tm7kPKTEFhuD3GpdA"
   },
   {
     "City": "Brussels",
@@ -7585,7 +7613,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/tm7kPKTEFhuD3GpdA"
   },
   {
     "City": "Philadelphia",
@@ -7613,7 +7641,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/tm7kPKTEFhuD3GpdA"
   },
   {
     "City": "San Francisco",
@@ -7641,7 +7669,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/5ouHBHS4jnFLRNVX6"
   },
   {
     "City": "Tahiti",
@@ -7669,7 +7697,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/oWMptPNkzxgYPmGV7"
   },
   {
     "City": "Bora Bora",
@@ -7697,7 +7725,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/oWMptPNkzxgYPmGV7"
   },
   {
     "City": "Montezuma",
@@ -7725,7 +7753,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/Rag2Ja4pprEcUP4XA"
   },
   {
     "City": "Monteverde",
@@ -7753,7 +7781,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/Rag2Ja4pprEcUP4XA"
   },
   {
     "City": "Las Vegas",
@@ -7865,7 +7893,7 @@
     "Eleven": "",
     "Twelve": "",
     "Thirteen": "",
-    "PhotoAlbum": ""
+    "PhotoAlbum": "https://photos.app.goo.gl/Rpdkij1z5ZodWp6w7"
   },
   {
     "City": "New York",
