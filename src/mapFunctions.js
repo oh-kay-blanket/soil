@@ -248,7 +248,7 @@ const render = (data, map) => {
             markers.forEach(marker => {
                 if (inputField.value == "") {
                     marker.setMap(map);
-                } else if (inputField.value != "" && !marker.basicInfo.toLowerCase().includes(inputField.value.toLowerCase())) {
+                } else if (inputField.value != "" && !marker.basicInfo.toLowerCase().includes(inputField.value.toLowerCase().trim())) {
                     marker.setMap(null);
                 } else {
                     marker.setMap(map);
