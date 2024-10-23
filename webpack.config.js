@@ -8,13 +8,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Welcome',
+      title: 'Soil',
       template: "./src/index.html",
-      filename: "./index.html"
+      filename: "./index.html",
+	  favicon: "./src/img/logo.png"
     }),
-    new HtmlWebpackPlugin({
-      favicon: "./src/img/logo.png"
-    })
   ],
   output: {
     filename: 'bundle.js',
@@ -22,8 +20,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
-    host: '0.0.0.0'
+    static: './',
+    host: '0.0.0.0',
+	hot: true,
+	watchFiles: ['src/**/*']
   },
   module: {
     rules: [
@@ -47,9 +47,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
+		type: 'asset/resource'
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,

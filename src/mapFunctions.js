@@ -1,16 +1,15 @@
 import icon from './img/plunkett-flag.png';
 import iconActive from './img/plunkett-flag_active.png';
-import MarkerClusterer from './markerCluster';
 
 // IMAGES
 function importAll(r) {
     let images = {};
-    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+    r.keys().map((item, index) => { images[item.replace('./', '')] = r(item).default || r(item) });
     return images;
 }
 
 // Import images
-const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('./img', false, /\.(jpg)$/));
 
 // Setup coordinate
 const newCoordinate = (newName,lngStart,coordinates) => {
@@ -49,6 +48,7 @@ const parseCoordinates = (newName,coordinates) => {
 
 // Get photo
 const photoCheck = trip => {
+	console.log(images[`${trip.Id}.jpg`])
     return trip.Photo ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '">' : '';
 }
 
@@ -191,15 +191,6 @@ const setPath = (map, marker, tripPath) => {
     }
 }
 
-const makeCluster = (map, markers) => {
-    const mcOptions = {
-        gridSize: 30,
-        maxZoom: 8,
-        zoomOnClick: true,
-        imagePath: 'https://raw.githubusercontent.com/mister-blanket/marker-cluster/master/m'};
-    return new MarkerClusterer(map, markers, mcOptions);
-}
-
 // Render map
 const render = (data, map) => {
     let tripPath = "";
@@ -237,9 +228,6 @@ const render = (data, map) => {
         });
         markers.push(marker);
     });
-
-    // Make clusters
-    // makeCluster(map, markers);
 
     const checkInput = () => {
         const inputField = document.querySelector(".input");
