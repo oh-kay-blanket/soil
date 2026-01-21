@@ -4,7 +4,7 @@
     position: absolute;
     z-index: 1;
     box-sizing: border-box;
-    background-color: #f8f8f8;
+    background-color: #fbfaf5;
     padding: 12px;
     border: 1px solid #d8534f;
 
@@ -57,10 +57,10 @@
     @include desktop {
         top: 1vh;
         left: -453px;
-        height: 98vh;
+        max-height: 98vh;
         width: 450px;
         overflow-y: auto;
-        border-radius: 10px;
+        border-radius: 1rem;
         box-shadow: 3px 3px 5px #6666;
         transition: left .15s linear;
 
@@ -77,6 +77,8 @@
 
       .map-panel-photo {
             width: 100%;
+            border-radius: 2rem;
+            margin-top: .5rem;
         }
         
         /* In Window */
