@@ -145,19 +145,75 @@ const hideOverlay = () => {
 
 // Set up hammer
 var hammer = new Hammer(overlay)
-hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL })
+hammer.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL })
 
-// Handle swipe
-hammer.on('swipe', function (e) {
-	// down
-	if (e.offsetDirection == 16 && window.innerWidth < 769) {
-		overlay.classList.add('peek')
-		overlay.classList.remove('open')
+// Track overlay drag state
+let startHeight = 0
+let isDragging = false
 
-		// up
-	} else if (e.offsetDirection == 8 && window.innerWidth < 769) {
+// Handle pan for fluid movement
+hammer.on('panstart', function (e) {
+	if (window.innerWidth >= 769) return
+	// Only allow drag when scrolled to top
+	if (overlay.scrollTop > 0) return
+
+	isDragging = true
+	startHeight = overlay.offsetHeight
+	overlay.classList.add('dragging')
+})
+
+hammer.on('panmove', function (e) {
+	if (window.innerWidth >= 769 || !isDragging) return
+
+	// Calculate new height (subtract deltaY because dragging up = negative deltaY = bigger height)
+	const newHeight = startHeight - e.deltaY
+	const maxHeight = window.innerHeight * 0.99
+	const minHeight = 0
+
+	// Clamp height between min and max
+	const clampedHeight = Math.max(minHeight, Math.min(maxHeight, newHeight))
+	overlay.style.height = clampedHeight + 'px'
+})
+
+hammer.on('panend', function (e) {
+	if (window.innerWidth >= 769 || !isDragging) return
+
+	isDragging = false
+	overlay.classList.remove('dragging')
+	overlay.style.height = '' // Clear inline style, let CSS classes take over
+
+	const currentHeight = overlay.offsetHeight
+	const viewportHeight = window.innerHeight
+	const peekHeight = viewportHeight * 0.3
+	const openHeight = viewportHeight * 0.99
+	const threshold = (peekHeight + openHeight) / 2
+
+	// Factor in velocity for snapping decision
+	const velocityThreshold = 0.3
+
+	if (e.velocityY > velocityThreshold) {
+		// Fast swipe down - go to peek or close
+		if (currentHeight < peekHeight * 0.7) {
+			hideOverlay()
+		} else {
+			overlay.classList.add('peek')
+			overlay.classList.remove('open')
+		}
+	} else if (e.velocityY < -velocityThreshold) {
+		// Fast swipe up - go to open
 		overlay.classList.add('open', 'top')
 		overlay.classList.remove('peek')
+	} else {
+		// Slow drag - snap based on position
+		if (currentHeight < peekHeight * 0.5) {
+			hideOverlay()
+		} else if (currentHeight < threshold) {
+			overlay.classList.add('peek')
+			overlay.classList.remove('open')
+		} else {
+			overlay.classList.add('open', 'top')
+			overlay.classList.remove('peek')
+		}
 	}
 })
 

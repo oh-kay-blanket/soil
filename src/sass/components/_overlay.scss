@@ -17,13 +17,17 @@
         border-bottom: none;
         border-radius: 10px 10px 0 0;
         box-shadow: 0 0 5px #6666;
-        transition: visibility 0s linear 0.15s, height .15s linear;
+        transition: visibility 0s linear 0.15s, height .15s ease-out;
         overflow-y: hidden;
+
+        &.dragging {
+            transition: none;
+        }
 
         &.peek {
             visibility: visible;
             height: 30vh;
-            transition: visibility 0s, height .15s linear;
+            transition: visibility 0s, height .15s ease-out;
             
             .overlay-size {
                 margin: .3em auto;
@@ -37,7 +41,7 @@
         &.open {
             visibility: visible;
             height: 99vh;
-            transition: visibility 0s, height .15s linear;
+            transition: visibility 0s, height .15s ease-out;
             overflow-y: auto;
 
             &.top {
