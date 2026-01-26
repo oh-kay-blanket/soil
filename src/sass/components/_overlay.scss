@@ -9,6 +9,7 @@
     border: 1px solid #d8534f;
 
     @include mobile {
+        position: fixed;
         visibility: hidden;
         bottom: 0;
         width: 100vw;
@@ -41,6 +42,7 @@
         &.open {
             visibility: visible;
             height: 99vh;
+            height: 99svh; /* Small viewport height - consistent size regardless of browser chrome */
             transition: visibility 0s, height .15s ease-out;
             overflow-y: auto;
 

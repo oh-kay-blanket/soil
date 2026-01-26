@@ -167,7 +167,8 @@ hammer.on('panmove', function (e) {
 
 	// Calculate new height (subtract deltaY because dragging up = negative deltaY = bigger height)
 	const newHeight = startHeight - e.deltaY
-	const maxHeight = window.innerHeight * 0.99
+	const viewportHeight = window.visualViewport?.height || window.innerHeight
+	const maxHeight = viewportHeight * 0.99
 	const minHeight = 0
 
 	// Clamp height between min and max
@@ -183,7 +184,7 @@ hammer.on('panend', function (e) {
 	overlay.style.height = '' // Clear inline style, let CSS classes take over
 
 	const currentHeight = overlay.offsetHeight
-	const viewportHeight = window.innerHeight
+	const viewportHeight = window.visualViewport?.height || window.innerHeight
 	const peekHeight = viewportHeight * 0.3
 	const openHeight = viewportHeight * 0.99
 	const threshold = (peekHeight + openHeight) / 2
