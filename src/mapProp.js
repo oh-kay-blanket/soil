@@ -5,6 +5,7 @@ const mapProp = {
     zoomControl: false,
     fullscreenControl: false,
     gestureHandling: "greedy",
+    mapTypeId: "terrain",
     styles: [
     {
         "featureType": "all",
@@ -38,7 +39,7 @@ const mapProp = {
         "elementType": "all",
         "stylers": [
             {
-                "color": "#f2f2f2"
+                "color": "#f7efd8"
             }
         ]
     },
@@ -47,7 +48,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#fcfaf4"
+                "color": "#f7efd8"
             }
         ]
     },
@@ -56,7 +57,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#fcfaf4"
+                "color": "#e7dbb4"
             }
         ]
     },
@@ -86,7 +87,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#eeeeee"
+                "color": "#f5e8c8"
             }
         ]
     },
@@ -104,7 +105,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#fcfaf4"
+                "color": "#f7efd8"
             }
         ]
     },
@@ -152,7 +153,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#c8d7d4"
+                "color": "#b8ccc8"
             }
         ]
     },
@@ -170,7 +171,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#fcfaf4"
+                "color": "#f7efd8"
             }
         ]
     }

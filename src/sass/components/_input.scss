@@ -26,10 +26,10 @@
     .input {
         width: 100%;
         box-sizing: border-box;
-        background-color: #f8f8f8;
+        background-color: #faf6e8;
         padding: 12px;
-        border: 1px solid #d8534f;
-        box-shadow: 0 0 5px #6666;
+        border: 1px solid #c4785c;
+        box-shadow: 0 0 5px rgba(139, 90, 60, 0.3);
         border-radius: 100px;
 
         @include desktop {
@@ -37,7 +37,7 @@
         }
 
         &:focus {
-            box-shadow: 0 0 5px #666;
+            box-shadow: 0 0 5px rgba(139, 90, 60, 0.5);
             outline: none;
         }
     }

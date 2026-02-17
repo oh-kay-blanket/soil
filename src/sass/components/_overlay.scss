@@ -17,7 +17,7 @@
 // Google Maps InfoWindow background override
 .gm-style-iw-c {
     padding: 0 !important;
-    background-color: #f5d742 !important;
+    background-color: #f0d896 !important;
 }
 
 .gm-style-iw-d {
@@ -26,7 +26,7 @@
 
 // Color the InfoWindow triangle/arrow
 .gm-style-iw-tc::after {
-    background: #f5d742 !important;
+    background: #f0d896 !important;
 }
 
 // Google Maps InfoWindow overrides (for marker tooltip)
@@ -46,9 +46,9 @@
     position: absolute;
     z-index: 1;
     box-sizing: border-box;
-    background-color: #fbfaf5;
+    background-color: #faf6e8;
     padding: 12px;
-    border: 1px solid #d8534f;
+    border: 1px solid #c4785c;
 
     @include mobile {
         position: fixed;
@@ -59,7 +59,7 @@
         height: 0;
         border-bottom: none;
         border-radius: 10px 10px 0 0;
-        box-shadow: 0 0 5px #6666;
+        box-shadow: 0 0 5px rgba(139, 90, 60, 0.3);
         transition: visibility 0s linear 0.15s, height .15s ease-out;
         overflow-y: hidden;
 
@@ -71,11 +71,11 @@
             visibility: visible;
             height: 30vh;
             transition: visibility 0s, height .15s ease-out;
-            
+
             .overlay-size {
                 margin: .3em auto;
                 width: 10%;
-                background-color: #ccc;
+                background-color: #c4a882;
                 border-radius: 15px;
                 height: 4px;
             }
@@ -109,7 +109,7 @@
         width: 450px;
         overflow-y: auto;
         border-radius: 1rem;
-        box-shadow: 3px 3px 5px #6666;
+        box-shadow: 3px 3px 5px rgba(139, 90, 60, 0.3);
         transition: left .15s linear;
 
         &.peek {
@@ -138,9 +138,10 @@
         
         .list__container {
             display: block;
-            background-color: #fcfaf4;
+            background-color: #f2ead0;
             margin: 10px;
             padding: 18px 9px;
+            border-radius: 1rem;
         }
         
         .menu {
