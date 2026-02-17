@@ -1,5 +1,5 @@
 import icon from './img/plunkett-flag.png'
-import iconActive from './img/plunkett-flag_active.png'
+import iconHover from './img/plunkett-flag_hover.png'
 
 // IMAGES
 function importAll(r) {
@@ -78,8 +78,25 @@ const placesCheck = (trip) => {
 // Markers
 let markers = []
 
+// Tooltip InfoWindow for hover
+let tooltipWindow = null
+
+const initTooltip = () => {
+	tooltipWindow = new google.maps.InfoWindow({
+		disableAutoPan: true,
+		pixelOffset: new google.maps.Size(0, -5)
+	})
+}
+
+// Desktop hover detection
+const isHoverDevice = () => window.matchMedia('(hover: hover)').matches
+
 // Make marker
 const makeMarker = (trip, points) => {
+	// Extract year from date string (e.g., "Jan 2020" -> "2020")
+	const yearMatch = trip.From?.match(/\d{4}/)
+	const year = yearMatch ? yearMatch[0] : ''
+
 	return new google.maps.Marker({
 		position: points[0],
 		icon: {
@@ -87,7 +104,8 @@ const makeMarker = (trip, points) => {
 			name: 'default',
 		},
 		color: '#786651',
-		title: `${trip.City || 'Unknown City'}`,
+		cityName: `${trip.City || 'Unknown City'}`,
+		year: year,
 		Id: `${trip.Id || 'unknown'}`,
 		basicInfo: `
             <div class="map-window">
@@ -259,6 +277,8 @@ const setPath = (map, marker, tripPath) => {
 const render = (data, map) => {
 	let tripPath = ''
 
+	initTooltip()
+
 	// Set up markers
 	data.forEach((trip) => {
 		// Safely get location data with fallbacks for missing properties
@@ -301,13 +321,32 @@ const render = (data, map) => {
 				makeOverlay(marker, points)
 				map.panTo(marker.position)
 				resetMarkers()
-				marker.setIcon({ url: iconActive, name: 'active' })
+				marker.setIcon({ url: iconHover, name: 'active' })
 
 				// Paths
 				clearPath(tripPath)
 				tripPath = drawPath(marker)
 				setPath(map, marker, tripPath)
 			})
+
+			// Desktop-only hover behavior
+			if (isHoverDevice()) {
+				google.maps.event.addListener(marker, 'mouseover', function () {
+					if (marker.icon.name !== 'active') {
+						marker.setIcon({ url: iconHover, name: 'hover' })
+					}
+					tooltipWindow.setContent(`<div class="marker-tooltip">${marker.cityName}${marker.year ? `<div class="marker-tooltip__year">${marker.year}</div>` : ''}</div>`)
+					tooltipWindow.open(map, marker)
+				})
+
+				google.maps.event.addListener(marker, 'mouseout', function () {
+					if (marker.icon.name === 'hover') {
+						marker.setIcon({ url: icon, name: 'default' })
+					}
+					tooltipWindow.close()
+				})
+			}
+
 			markers.push(marker)
 		}
 	})

@@ -1,5 +1,47 @@
 @use '../mixins/media' as *;
 
+// Marker hover tooltip
+.marker-tooltip {
+    padding: 0px 12px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &__year {
+        font-size: 12px;
+        font-weight: 400;
+        opacity: 0.6;
+    }
+}
+
+// Google Maps InfoWindow background override
+.gm-style-iw-c {
+    padding: 0 !important;
+    background-color: #f5d742 !important;
+}
+
+.gm-style-iw-d {
+    overflow: hidden !important;
+}
+
+// Color the InfoWindow triangle/arrow
+.gm-style-iw-tc::after {
+    background: #f5d742 !important;
+}
+
+// Google Maps InfoWindow overrides (for marker tooltip)
+.gm-style-iw-c {
+    // Remove focus ring
+    &:focus {
+        outline: none;
+    }
+}
+
+// Hide close button on InfoWindow
+.gm-ui-hover-effect {
+    display: none !important;
+}
+
 .overlay {
     position: absolute;
     z-index: 1;
