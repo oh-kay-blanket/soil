@@ -52,7 +52,7 @@ const parseCoordinates = (newName, coordinates) => {
 const photoCheck = (trip) => {
   console.log(images[`${trip.Id}.jpg`]);
   return trip.Photo
-    ? '<image class="map-panel-photo" src="' + images[`${trip.Id}.jpg`] + '">'
+    ? '<image class="map-panel-photo" style="filter: grayscale(100%) sepia(20%);" src="' + images[`${trip.Id}.jpg`] + '">'
     : "";
 };
 
@@ -108,24 +108,24 @@ const makeMarker = (trip, points) => {
     year: year,
     Id: `${trip.Id || "unknown"}`,
     basicInfo: `
-            <div class="map-window">
-                <div>
-					<h1>${trip.Trip || "Untitled Trip"}</h1>
-                    <h3>${trip.City || "Unknown City"}</h3>
-                </div>
-                <div>
-                    <p class="dates">${trip.From || "Unknown"} - ${
-                      trip.To || "Unknown"
-                    }</p>
-                </div>
-                ${photoCheck(trip)}
-                ${photoAlbumCheck(trip)}
-                ${peopleCheck(trip)}
-                ${placesCheck(trip)}
-                <div>
-                    <p>${trip.Description || "No description available."}</p>
-                </div>
-            </div>
+      <div class="map-window">
+        <div>
+        <h3>${trip.Trip || "Untitled Trip"}</h3>
+        <h1 style="display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 2px; flex-shrink: 0; position: relative; top: 1px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>${trip.City || "Unknown City"}</h1>
+        </div>
+        <div>
+            <p class="dates">${trip.From || "Unknown"} - ${
+              trip.To || "Unknown"
+            }</p>
+        </div>
+        ${photoCheck(trip)}
+        ${photoAlbumCheck(trip)}
+        ${peopleCheck(trip)}
+        ${placesCheck(trip)}
+        <div>
+            <p>${trip.Description || "No description available."}</p>
+        </div>
+      </div>
         `,
     buildPath: points.slice(1),
   });
