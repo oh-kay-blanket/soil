@@ -1,0 +1,24 @@
+{
+  "name": "Soil - Travel Map",
+  "short_name": "Soil",
+  "description": "Interactive travel map with photos and trip details",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7efd8",
+  "theme_color": "#f7efd8",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
