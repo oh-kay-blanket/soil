@@ -21,7 +21,7 @@ const mapProp = {
         "elementType": "geometry.stroke",
         "stylers": [
             {
-                "color": "#9c9c9c"
+                "color": "#8a7d6a"
             }
         ]
     },
@@ -39,7 +39,7 @@ const mapProp = {
         "elementType": "all",
         "stylers": [
             {
-                "color": "#f3e7c4"
+                "color": "#e8dcc4"
             }
         ]
     },
@@ -48,7 +48,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#f3e7c4"
+                "color": "#e8dcc4"
             }
         ]
     },
@@ -57,7 +57,43 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#e1d3a2"
+                "color": "#d9ccab"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ddd0b0"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#a08c6e"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#6b5a45"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#e8dcc4"
             }
         ]
     },
@@ -87,7 +123,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#f0e2bc"
+                "color": "#d4c8a8"
             }
         ]
     },
@@ -96,7 +132,7 @@ const mapProp = {
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#7b7b7b"
+                "color": "#5c4d3a"
             }
         ]
     },
@@ -105,7 +141,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#f3e7c4"
+                "color": "#e8dcc4"
             }
         ]
     },
@@ -153,7 +189,7 @@ const mapProp = {
         "elementType": "geometry.fill",
         "stylers": [
             {
-                "color": "#a0c4be"
+                "color": "#a8bfc4"
             }
         ]
     },
@@ -162,7 +198,7 @@ const mapProp = {
         "elementType": "labels.text.fill",
         "stylers": [
             {
-                "color": "#070707"
+                "color": "#4a5c62"
             }
         ]
     },
@@ -171,7 +207,7 @@ const mapProp = {
         "elementType": "labels.text.stroke",
         "stylers": [
             {
-                "color": "#f3e7c4"
+                "color": "#e8dcc4"
             }
         ]
     }
