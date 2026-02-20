@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
     <link rel="icon" href="logo.png"/>
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#f7efd8">
+    <!-- iOS PWA support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Soil">
+    <link rel="apple-touch-icon" href="logo.png">
     <title>soil</title>
 </head>
 <body>
     <section id="root"></section>
     <div class="input-container">
         <input class="input" placeholder="Search here" name="name"></input>
+    </div>
+    <div id="install-prompt" class="install-prompt" style="display: none;">
+        <button id="install-btn" class="install-btn">
+            <i class="fa fa-download"></i> Install App
+        </button>
+        <button id="install-close" class="install-close">
+            <i class="fa fa-times"></i>
+        </button>
     </div>
     <section class="overlay">
         <div class="overlay-size"></div>

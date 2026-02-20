@@ -1,0 +1,55 @@
+.install-prompt {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.install-btn {
+  padding: 12px 24px;
+  background-color: #bf4b47;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Lora", serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.2s;
+
+  i {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    background-color: rgb(130, 38, 35);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.install-close {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
