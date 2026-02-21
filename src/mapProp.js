@@ -177,7 +177,7 @@ const mapProp = {
       elementType: "all",
       stylers: [
         {
-          color: "#5ca0ae",
+          color: "#75b0a8",
         },
         {
           visibility: "on",
@@ -189,7 +189,7 @@ const mapProp = {
       elementType: "geometry.fill",
       stylers: [
         {
-          color: "#a8c2c4",
+          color: "#afc9c3",
         },
       ],
     },
