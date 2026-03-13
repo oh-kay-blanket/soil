@@ -1,6 +1,10 @@
+const isMobile = window.innerWidth <= 768;
+
 const mapProp = {
-  center: new google.maps.LatLng(18, -110.880497),
-  zoom: 3,
+  center: isMobile
+    ? new google.maps.LatLng(20, -50)
+    : new google.maps.LatLng(18, -110.880497),
+  zoom: isMobile ? 2 : 3,
   disableDefaultUI: true,
   zoomControl: false,
   fullscreenControl: false,
