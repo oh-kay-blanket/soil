@@ -1,5 +1,11 @@
 const CACHE_NAME = "soil-cache-v1";
-const urlsToCache = ["/", "/index.html", "/bundle.js", "/favicon.png"];
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/bundle.js",
+  "/favicon.png",
+  "favicon-cropped.png",
+];
 
 // Install event - cache app shell
 self.addEventListener("install", (event) => {
