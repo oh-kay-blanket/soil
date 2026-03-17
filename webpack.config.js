@@ -18,6 +18,8 @@ module.exports = {
       patterns: [
         { from: "./src/manifest.json", to: "manifest.json" },
         { from: "./src/service-worker.js", to: "service-worker.js" },
+        { from: "./src/img/favicon-192.png", to: "favicon-192.png" },
+        { from: "./src/img/favicon-512.png", to: "favicon-512.png" },
       ],
     }),
   ],
