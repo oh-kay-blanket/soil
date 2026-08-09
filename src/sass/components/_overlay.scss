@@ -1,172 +1,177 @@
-@use '../mixins/media' as *;
+@use "../mixins/media" as *;
 
 // Marker hover tooltip
 .marker-tooltip {
-    padding: 0px 12px 10px;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-    color: #4a3d2e;
+  padding: 0px 12px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #4a3d2e;
 
-    &__year {
-        font-size: 12px;
-        font-weight: 400;
-        color: #6b5a45;
-    }
+  &__year {
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b5a45;
+  }
 }
 
 // Google Maps InfoWindow background override
 .gm-style-iw-c {
-    padding: 0 !important;
-    background-color: #f0e6d2 !important;
-    border: 1px solid #8a7d6a !important;
+  padding: 0 !important;
+  background-color: #f0e6d2 !important;
+  border: 1px solid #8a7d6a !important;
 }
 
 .gm-style-iw-d {
-    overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 // Color the InfoWindow triangle/arrow
 .gm-style-iw-tc::after {
-    background: #f0e6d2 !important;
+  background: #f0e6d2 !important;
 }
 
 // Google Maps InfoWindow overrides (for marker tooltip)
 .gm-style-iw-c {
-    // Remove focus ring
-    &:focus {
-        outline: none;
-    }
+  // Remove focus ring
+  &:focus {
+    outline: none;
+  }
 }
 
 // Hide close button on InfoWindow
 .gm-ui-hover-effect {
-    display: none !important;
+  display: none !important;
 }
 
 .overlay {
-    position: absolute;
-    z-index: 1;
-    box-sizing: border-box;
-    background-color: #e8dcc4;
-    padding: 12px;
-    border: 1px solid #8a7d6a;
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  background-color: #e8dcc4;
+  padding: 12px;
+  border: 1px solid #8a7d6a;
 
-    @include mobile {
-        position: fixed;
-        visibility: hidden;
-        bottom: 0;
-        width: 100vw;
-        max-width: 450px;
-        height: 0;
-        border-bottom: none;
-        border-radius: 20px 20px 0 0;
-        box-shadow: 0 -2px 15px rgba(90, 77, 58, 0.35);
-        transition: visibility 0s linear 0.15s, height .15s ease-out;
-        overflow-y: hidden;
+  @include mobile {
+    position: fixed;
+    visibility: hidden;
+    bottom: 0;
+    width: 100vw;
+    max-width: 450px;
+    height: 0;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -2px 15px rgba(90, 77, 58, 0.35);
+    transition:
+      visibility 0s linear 0.15s,
+      height 0.15s ease-out;
+    overflow-y: hidden;
 
-        &.dragging {
-            transition: none;
-        }
-
-        &.peek {
-            visibility: visible;
-            height: 30vh;
-            transition: visibility 0s, height .15s ease-out;
-
-            .overlay-size {
-                margin: .3em auto;
-                width: 10%;
-                background-color: #a08c6e;
-                border-radius: 15px;
-                height: 4px;
-            }
-        }
-
-        &.open {
-            visibility: visible;
-            height: 99vh;
-            height: 99svh; /* Small viewport height - consistent size regardless of browser chrome */
-            transition: visibility 0s, height .15s ease-out;
-            overflow-y: auto;
-
-            &.top {
-                touch-action: pan-down !important;
-            }
-
-            &.not-top {
-                touch-action: pan-y !important;
-            }
-
-            .overlay__inner {
-                padding-bottom: 2em;
-            }
-        }
+    &.dragging {
+      transition: none;
     }
 
-    @include desktop {
-        top: 1vh;
-        left: -453px;
-        max-height: 98vh;
-        width: 450px;
-        overflow-y: auto;
-        border-radius: 1.5rem;
-        box-shadow: 3px 4px 15px rgba(90, 77, 58, 0.35);
-        transition: left .15s linear;
+    &.peek {
+      visibility: visible;
+      height: 30vh;
+      transition:
+        visibility 0s,
+        height 0.15s ease-out;
 
-        &.peek {
-            left: 8px;
-        }
-
-        .overlay-size{
-            display: none;
-        }
+      .overlay-size {
+        margin: 0.3em auto;
+        width: 10%;
+        background-color: #a08c6e;
+        border-radius: 15px;
+        height: 4px;
+      }
     }
 
-    .overlay__inner {
+    &.open {
+      visibility: visible;
+      height: 99vh;
+      height: 99svh; /* Small viewport height - consistent size regardless of browser chrome */
+      transition:
+        visibility 0s,
+        height 0.15s ease-out;
+      overflow-y: auto;
 
-      .map-panel-photo {
-            width: 100%;
-            border-radius: 2rem;
-            margin: .5rem 0;
-        }
-        
-        /* In Window */
-        
-        .dates {
-            display: inline-block;
-            font-size: 0.8rem;
-            background-color: rgba(138, 125, 106, 0.15);
-            color: #5c4d3a;
-            padding: 4px 10px;
-            border-radius: 4px;
-            margin: 0.5em 0 1em;
-        }
+      &.top {
+        touch-action: pan-down !important;
+      }
 
-        .list__container {
-            display: block;
-            background-color: #d9ccab;
-            margin: 10px;
-            padding: 18px 9px;
-            border-radius: 1rem;
-        }
-        
-        .menu {
-            text-align: center;
-        }
-        
-        .list__title {
-            font-weight: 600;
-            font-size: 1rem;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .list__item {
-            display: block;
-            padding: .5em 1em .5em 1em;
-            letter-spacing: .5px;
-            color: #4a3d2e;
-            font-size: .92rem;
-        }
+      &.not-top {
+        touch-action: pan-y !important;
+      }
+
+      .overlay__inner {
+        padding-bottom: 2em;
+      }
     }
+  }
+
+  @include desktop {
+    top: 1vh;
+    left: -453px;
+    max-height: 98vh;
+    width: 450px;
+    overflow-y: auto;
+    border-radius: 1.5rem;
+    box-shadow: 3px 4px 15px rgba(90, 77, 58, 0.35);
+    transition: left 0.15s linear;
+
+    &.peek {
+      left: 8px;
+    }
+
+    .overlay-size {
+      display: none;
+    }
+  }
+
+  .overlay__inner {
+    .map-panel-photo {
+      width: 100%;
+      border-radius: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    /* In Window */
+
+    .dates {
+      display: inline-block;
+      font-size: 0.8rem;
+      background-color: rgba(138, 125, 106, 0.15);
+      color: #5c4d3a;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin: 0.5em 0 1em;
+    }
+
+    .list__container {
+      display: block;
+      background-color: #d9ccab;
+      margin: 10px;
+      padding: 18px 9px;
+      border-radius: 1rem;
+    }
+
+    .menu {
+      text-align: center;
+    }
+
+    .list__title {
+      font-weight: 600;
+      font-size: 1rem;
+      font-family: "Playfair Display", serif;
+    }
+
+    .list__item {
+      display: block;
+      padding: 0.5em 1em 0.5em 1em;
+      letter-spacing: 0.5px;
+      color: #4a3d2e;
+      font-size: 0.92rem;
+    }
+  }
 }
