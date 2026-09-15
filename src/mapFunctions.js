@@ -52,7 +52,9 @@ const parseCoordinates = (newName, coordinates) => {
 const photoCheck = (trip) => {
   console.log(images[`${trip.Id}.jpg`]);
   return trip.Photo
-    ? '<image class="map-panel-photo" style="filter: grayscale(100%) sepia(20%);" src="' + images[`${trip.Id}.jpg`] + '">'
+    ? '<image class="map-panel-photo" style="filter: sepia(60%);" src="' +
+        images[`${trip.Id}.jpg`] +
+        '">'
     : "";
 };
 
